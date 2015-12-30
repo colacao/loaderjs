@@ -1,0 +1,20 @@
+/*from tccdn minify at 2015-12-30 14:04:33,file：/touch/weixin/train/css/public/mCal.0.0.4.css*/
+/*日历控件begin*/
+
+.calendar-wrapper table td.festival {
+	font-size:12px;
+	color:#09bb07;
+}
+.calendar-wrapper table th.saturday,.calendar-wrapper table th.sunday,.calendar-wrapper table td.saturday,.calendar-wrapper table td.sunday {
+    color:#09bb07;
+}
+.calendar .disabled {
+    color: #999 !important;
+}
+.calendar-wrapper {
+    margin-bottom: 28px;
+}
+.calendar th {
+	text-align: center;
+}
+

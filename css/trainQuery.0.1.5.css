@@ -1,0 +1,603 @@
+/*from tccdn minify at 2015-12-30 14:04:47,file：/touch/weixin/train/css/trainQuery.0.1.5.css*/
+
+/*公共边框*/
+.border-bottom {
+    border-width: 0 0 1px 0;
+    border-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAEAQMAAAB1Fsd5AAAABlBMVEUAAADc3NyDHGF3AAAAAXRSTlMAQObYZgAAAA1JREFUCNdjaGAAgQYABAgBAXDgsY4AAAAASUVORK5CYII=) 2 0 stretch;
+}
+ol, ul {
+    list-style: none
+}
+
+html {
+	background: #F2F4F7;
+}
+*{margin:0;padding:0}
+body {
+    overflow-x:hidden;
+    font-size:14px;
+    line-height:1.5;
+    color:#333;
+    font-family:arial,sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none; /* Firefox all */
+    -ms-user-select: none; /* IE 10+ */
+    /* No support for these yet, use at own risk */
+    -o-user-select: none;
+    user-select: none;
+}
+
+/*.wxTrainBg{
+    background-image:url(http://wx.40017.cn/touch/weixin/train/img/wxTrainIconm.png);
+    background-repeat: no-repeat;
+    background-size: 190px 293px;
+    -o-background-size:190px 293px ;
+    -webkit-background-size: 190px 293px;
+}*/
+.icon-train {
+    background-image: url(http://wx.40017.cn/touch/weixin/train/img/common/wxtrain_icon_01.png)!important;
+    background-size: 320px!important;
+}
+
+/*搜索页样式 begin*/
+.fn-clear:after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.fn-hide {
+    display:none;
+}
+.ui-mask{height: 100%!important;}
+.page{
+    z-index: 10;
+    -webkit-transform: none;
+    transform: none;
+    margin:0;
+    padding:0;
+    border-radius: 0;
+    border:0;
+}
+#t_content {
+	/* padding: 0 10px 15px; */
+}
+#t_city {
+	padding: 17px 15px 13px 0;
+	position:relative;
+}
+#t_city>div {
+	float:left;
+	width:50%;
+	position:relative;
+
+}
+#t_city p {
+	font-size: 12px;
+	color: #999;
+	padding: 0 0 9px 0;
+	vertical-align: middle;
+}
+#t_city p.t_incity {
+	height:32px;
+	padding-bottom:0;
+}
+#t_city input {
+	font-size: 24px;
+	border:0;
+	background:0;
+	color: #333;
+	width:100%;
+	/*z-index:9;*/
+	line-height:30px;
+	height:30px;
+}
+#t_to {
+	text-align:right;
+}
+#t_to input {
+	text-align:right;
+}
+/*.wxBgIcon {*/
+	/*background:url(images/wxTrainSearch.png) no-repeat;*/
+	/*background-size:100px 155px;*/
+/*}*/
+.t_changecity {
+	width: 34px;
+	height: 34px;
+	position:absolute;
+	left:50%;
+	top: 50%;
+	padding:10px;
+	display:block;
+    margin-left: -34px;
+    margin-top: -27px;
+}
+.tpic_change {
+	display:block;
+	width: 34px;
+	height: 34px;
+	background-position: 284px -5px !important;
+}
+.citysearch {
+	margin-top:10px;
+	border-top:1px solid #dedede;
+}
+/*.t_goIcon,.t_toIcon {
+	height: 16px;
+    width: 13px;
+    display: inline-block;
+    margin-right: 3px;
+    vertical-align: middle;
+    background-position: -107px -6px;
+    background-size: 154px;
+}*/
+/*#t_from .tra_left,#t_to .tra_left {
+	overflow:hidden;
+	position:absolute;
+	right:20px;
+	top:39px;
+	background-position:-170px -70px;
+	display:inline-block;
+	width: 9px;
+	height: 13px;
+}
+#t_to .tra_left{
+	right:-19px;
+}*/
+#BeginTime{
+	line-height:55px;
+	font-size:15px;
+    
+    position: relative;
+	height: 55px;
+	background-color: #fff;
+	padding-right: 15px;
+}
+/*#BeginTime .dateIcon {
+	height:17px;
+	width:16px;
+	display:inline-block;
+	background-position:-127px -68px;
+	vertical-align:middle;
+	float: left;
+	margin: 18px 5px 0 0;
+}*/
+.submit-box {
+    padding: 0 15px;
+}
+.levdatetext {
+	float:left;
+	color: #666;
+	font-size: 15px;
+}
+.leavedate {
+	float:right;
+	font-size: 18px;
+	color: #333;
+}
+.query-wrap {
+    padding: 0 0 0 15px;
+    background-color: #ffffff;
+}
+.searchwrap{
+	line-height:55px;
+	padding: 0 6px;
+	font-size:15px;
+    border-bottom:1px solid #dedede;
+    position: relative;
+}
+.searchwrap div:last-child{
+    float:right;
+}
+.searchwrap div:first-child{
+    float:Left;
+}
+.searchwrap .button-switch{
+    display: block;
+	box-shadow: 0 0 1px 1px #F1F1F1;
+    position: absolute;
+    right: 8px;
+    top: 12px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    behavior: url(ie-css3.htc);
+    -webkit-tap-highlight-color:none
+}
+.searchwrap .button-slider{
+    box-shadow: 1px 1px 1px 0 rgba(135, 135, 135, 0.5);
+}
+.linebox {
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    text-align: center;
+    z-index: 0;
+    font-size: 11px;
+    color:#c0c0c3;
+    margin: 5px 0 5px;
+}
+.linebox span {
+    background: none repeat scroll 0 0 #efeff4;
+    display: inline-block;
+    padding: 0 10px;
+    position: relative;
+    z-index: 12;
+}
+.linebox p {
+   /* background-image:linear-gradient(to left,#fff 0,#dce1e5 15%,#dce1e5 85%,#fff 100%);
+    background-image:-webkit-gradient(linear,left top,right top,#fff 0,#dce1e5 35%,#dedede 65%,#fff 100%);
+	background-image:-webkit-linear-gradient(left,#fff 0,#dce1e5 15%,#dce1e5 85%,#fff 100%);
+	background-image:-moz-linear-gradient(to left,#fff 0,#dce1e5 15%,#dce1e5 85%,#fff 100%);
+	background-image:-ms-linear-gradient(to left,#fff 0,#dce1e5 15%,#dce1e5 85%,#fff 100%);
+	background-image:-o-linear-gradient(to left,#fff 0,#dce1e5 15%,#dce1e5 85%,#fff 100%);*/
+    height: 1px;
+    left: 15%;
+    position: absolute;
+    top: 50%;
+    width: 70%;
+    /*z-index: 9;*/
+    border-top: 1px solid #dedede;
+
+}
+#queryhistory {
+     padding-bottom: 70px;
+    display:none;
+}
+#queryhistory .querybox_cont{
+	width: 100%;
+	height: auto !important;
+	margin: 0 auto;
+	text-align: center;
+	color:#a5a5a7;
+	font-size: 11px;
+    overflow-y: auto;
+    line-height: 28px;
+}
+#queryhistory .querybox_cont ul{
+	list-style: none;
+}
+.querybox_cont ul li span{
+    color: #888;
+	font-size: 12px;
+}
+.querybox_cont ul li span:first-child{
+	margin-right: 8px;
+    position: absolute;
+    right: 52%;
+}
+.querybox_cont ul li span:last-child{
+	margin-left: 8px;
+    position: absolute;
+    left: 52%;
+}
+/*.logo{
+    width: 100px;
+    height: 25px;
+    margin: 8px auto;
+    text-align: center;
+    background-position: -13px -141px;
+}*/
+#t_search {
+    border: 0;
+    height: 44px;
+    display: block;
+    background: #09bb07;
+    width: 100%;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #FFF;
+    text-align: center;
+    line-height: 44px;
+    margin-top: 15px;
+}
+#t_search:active {
+    background-color: #039702;
+}
+/*搜索页样式 end*/
+#t_city input.flyleft {
+    -webkit-transition: all 0.5s ease-in-out 0s;
+    -moz-transition: all 0.5s ease-in-out 0s;
+    -ms-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
+    -webkit-transform: translateX(-170%);
+    -moz-transform: translateX(-170%);
+    -ms-transform: translateX(-170%);
+    transform: translateX(-170%)
+}
+#t_city input.flyright {
+    -webkit-transition: all 0.5s ease-in-out 0s;
+    -moz-transition: all 0.5s ease-in-out 0s;
+    -ms-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
+    -webkit-transform: translateX(170%);
+    -moz-transform: translateX(170%);
+    -ms-transform: translateX(170%);
+    transform: translateX(170%)
+}
+
+.del{
+    height: 45px;
+    border: 0;
+    background: none;
+    width: 100%;
+    -webkit-border-radius: 5px;
+}
+.del{
+    height: 45px;
+    border: 0;
+    background: none;
+    width: 100%;
+    -webkit-border-radius: 5px;
+}
+.none{
+    display:none;
+}
+
+#showTip {
+    background: none repeat scroll 0 0 #EFEFF4;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #333;
+    box-sizing: border-box;
+    display: none;
+    margin: 0 8%;
+    position: fixed;
+    width: 84%;
+    z-index: 99999;
+    top: 50%;
+    transform: translate3d(0, -65%, 0);
+    -webkit-transform: translate3d(0, -65%, 0);      display: block;
+}
+
+#bgTip {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: none
+}
+#mainPage a {
+    text-decoration: none;
+}
+.f-tip{
+    display: none;
+    background-color: #fff7dc;
+    padding: 10px 15px;
+    font-size:12px;
+    height: 40px;
+    color: #9e8052;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    overflow: hidden;      text-overflow: ellipsis;      white-space: nowrap;
+}
+
+.f-tip span{
+    height: 14px;
+    overflow: hidden;      
+}
+#calContainerPage .tip{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background: #000;
+    font-size: 12px;
+    opacity: 0.8;
+    color: #b2b2b2;
+    text-align:center;
+}
+#calContainerPage .tip p{
+    margin-top:5px;
+}
+
+
+#showTip {
+    background: none repeat scroll 0 0 #EFEFF4;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #333;
+    box-sizing: border-box;
+    display: none;
+    margin: 0 8%;
+    position: fixed;
+    width: 84%;
+    z-index: 99999;
+    top: 50%;
+    transform: translate3d(0, -65%, 0);
+    -webkit-transform: translate3d(0, -65%, 0);      display: block;
+}
+
+/*.msg-title {
+    text-align: center;
+    line-height: 1;
+    font-size: 18px;
+    color: #333;
+    padding: 0 15px;
+}*/
+
+#showTip .msg-content {
+    padding: 15px 8px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    line-height: 21px;
+    margin: 0 7px;
+}
+
+#showTip .msg-btn {
+    text-align: center;
+    border-top: 1px solid #dcdcdc;
+
+}
+
+#showTip .msg-btn.double button {
+    width: 50%;
+    display: inline-block
+;
+    background: #EFEFF4;                              color: #09bb07;
+}
+
+#showTip .msg-btn.double button.graybt {
+    color: #666;
+}
+
+#showTip .msg-btn.double button.graybt.touched {
+    background: #a7a7a7 !important;
+    color: #dedede !important
+}
+#showTip .icon-msg {
+    margin-top: -8px;
+    margin-left: -8px;
+}
+#showTip button.confirm {
+    font-size: 18px;
+}
+#showTip button.cancle {
+    border-right: 1px solid #dcdcdc;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#showTip .msg-btn button.btn{
+    background: #EFEFF4;
+    color: #09bb07;
+}
+
+#showTip .btnbox {
+    padding: 20px 10px
+}
+
+#showTip .btn {
+    border: 0;
+    height: 44px;
+    display: block;
+    background: #09bb07;
+    width: 100%;
+    -webkit-border-radius: 4px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #FFF;
+    text-align: center;
+    line-height: 44px;
+
+}
+
+/*首页tab切换*/
+.index_nav {
+    width: 100%;
+    background: #fff;
+    height: 43px;
+}
+.index_nav li {
+    width: 50%;
+    height: 44px;
+    line-height: 44px;
+    float: left;
+    list-style: none;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+}
+.index_nav .border_bottom_green {
+    border-bottom: 3px solid #09bb07;
+    color: #09bb07;
+    font-size: 18px;
+    height: 41px;
+}
+/*首页底部footer样式*/
+/*
+.pub_bottom {
+    width: 100%;
+    height: 49px;
+    position: fixed;
+    border-top: 1px solid #dedede;
+    background-color: #fff;
+    bottom: 0;
+    left: 0;
+}
+.pub_bottom li {
+    width: 25%;
+    height: 49px;
+    float: left;
+    list-style: none;
+}
+.pub_bottom li .on {
+    color: #03bc01;
+}
+.pub_bottom li a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 14px;
+    font-size: 12px;
+    font-family: "微软雅黑";
+    color: #7f7f7f;
+    text-decoration: none;
+}
+.pub_bottom li .on .jc_search {
+    background-position: -19px -42px;
+}
+.pub_bottom li a .jc_search {
+    background-position: -21px -5px;
+}
+.pub_bottom li a .hb_move {
+    background-position: -53px -5px;
+}
+.pub_bottom li a .tj_tiket {
+    background-position: -91px -5px;
+}
+.pub_bottom li a .jc_book {
+    background-position: -125px -5px;
+}
+.pub_bottom li a span {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background: url(http://wx.40017.cn/touch/weixin/train/img/bottom_icon.png) center no-repeat;
+    margin-top: 1px;
+    background-size: 166px 91px;
+}
+*/
+.submain {
+    padding-bottom:52px;
+}
+/*广告图*/
+.slideBox {
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+}
+.slideMain img {
+    display: block;
+    width: 100%;
+}
+.slidePoint2 {
+    position: absolute;
+    left: 50%;
+    bottom: 1px;
+    line-height: 0;
+    border-radius: 5px;
+    padding: 2px 3px 2px 8px;
+}
+.slidePoint2 span {
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #fff;
+    margin-right: 5px;
+    opacity: 0.5;
+}
+.slidePoint2 span.active {
+    opacity: 1;
+}
+

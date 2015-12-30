@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>同程旅游</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <style type="text/css">
+        .loading_wrap{ transition : all 0.2s ease-out ;  opacity: 1;   background: #E9ECF1 !important;    width:100%;    height: 100%;    position: fixed;    top:0;    left:0;    z-index:1101;}.loading{    position: absolute;    background: #E9ECF1 !important;    top: 50%;    left: 50%;    width: 71px;    height: 71px;    margin: -33px 0 0 -33px;}.loadingimg{    display: block;    width: 66px;    height: 66px;    margin: 0 auto;}.loading .loading_text{    font-size: 14px;    margin-top: 12px;    text-align: center;    color: #999;}
+    </style>
+
+     <script type="text/javascript">
+        function insertAd(){
+            var d = document.createElement('div');
+            d.innerHTML =' <div id="ad" class="slideBox" style="overflow: hidden; position: relative;"><div class="slideMain"><ul class="slideCont" style="position: relative; width: 100%; transform: translate3d(-100%, 0px, 0px);"><li class="slideItem"><a href="http://www.ly.com/zhuanti/bachelordaywx-zizhuyou/" ><img src="http://pic3.40017.cn/txoc/poster/2015/11/11/18/0LlQUk.jpg" alt=""></a></li><li class="slideItem" style="position: absolute; width: 100%; top: 0px; left: 100%;"><a href="http://m.ly.com/zhuanti/paidindex"><img src="http://pic3.40017.cn/txoc/poster/2015/11/11/10/obWv65.png" alt=""></a></li><li class="slideItem" style="position: absolute; width: 100%; top: 0px; left: 200%;"><a href="http://www.ly.com/zhuanti/bachelordaywx-zizhuyou/"><img src="http://pic3.40017.cn/txoc/poster/2015/11/11/18/0LlQUk.jpg" alt=""></a></li></ul><div class="slidePoint2" style="margin-left: -16.5px;"><span class=""></span><span class="active"></span></div></div><span class="indicator" style="margin-left: 0px;"><i class=""></i><i class="active"></i></span></div>';
+            document.body.insertBefore(d.firstElementChild,document.getElementById("indexNav"))
+        }
+    </script>
+</head>
+<body>
+   <section class="loading_wrap" id="loading"><section class="loading"><img src="loading.gif" class="loadingimg"> <p class="loading_text">一路同程</p></section></section>
+    <script type="text/javascript">
+        var begin = +new Date;
+        var exports = {
+            js:{
+                url:"http://js.40017.cn/cn/min/??",
+                list:[
+                    // "/cn/train/promote/tongcheng.loadjs/mode1.js?1.20",
+                    // "/cn/train/promote/tongcheng.loadjs/mode2.js?1.22",
+                    // "/cn/train/promote/tongcheng.loadjs/mode3.js?1.32",
+                    "/cn/train/promote/tongcheng.loadjs/js/zepto.js?1.0",
+                    "/cn/train/promote/tongcheng.loadjs/js/common.0.2.6.js?1.0",
+                    "/cn/train/promote/tongcheng.loadjs/js/page.js?1.0",
+                    "/cn/train/promote/tongcheng.loadjs/js/autoComplete.js?1.0",
+                    "/cn/train/promote/tongcheng.loadjs/js/location.js?1.0",
+                    "/cn/train/promote/tongcheng.loadjs/js/city.js?1.0",
+                    "/cn/train/promote/tongcheng.loadjs/js/calendar.js?1.0",
+                    "/cn/train/promote/tongcheng.loadjs/js/dialog.js?1.0",
+                    "/cn/train/promote/tongcheng.loadjs/js/slider.js?1.0",
+                    "/cn/train/promote/tongcheng.loadjs/js/trainQuery.0.4.7.js?1.0"
+                ],
+                onLoad:function(){
+                    console.log("js sector clear"+(+new Date-begin))
+                }
+            },
+            css:{
+                url:"http://js.40017.cn/cn/min/??",
+                list:[
+                    "/cn/train/promote/tongcheng.loadjs/css/page.css?1.0",
+                    "/cn/train/promote/tongcheng.loadjs/css/autoComplete.css?1.0",
+                    "/cn/train/promote/tongcheng.loadjs/css/city.css?1.0",
+                    "/cn/train/promote/tongcheng.loadjs/css/calendar.css?1.0",
+                    "/cn/train/promote/tongcheng.loadjs/css/dialog.css?1.0",
+                    "/cn/train/promote/tongcheng.loadjs/css/mCal.0.0.4.css?1.0",
+                    "/cn/train/promote/tongcheng.loadjs/css/trainQuery.0.1.4.css?1.5"
+                ],
+                onLoad:function(){
+                     console.log("css sector clear"+(+new Date-begin))
+                }
+            },
+            html:{
+                url:"http://js.40017.cn/cn/train/promote/tongcheng.loadjs/",
+                list:[
+                    "/temp/temp.html?1.91"
+                ],
+                onLoad:function(){
+                    console.log("html sector clear"+(+new Date-begin))
+                }
+            },
+            onLoad:function(){
+                console.log("all sector clear" +(+new Date-begin))
+                require("http://js.40017.cn/cn/min/??",["/cn/train/promote/tongcheng.loadjs/angularjs.js?1.6.4"]);
+            }
+        };
+        (function(ver){
+            var a = localStorage.getItem("_m_load");
+            if (document.cookie.match(/_m_load/) && a) {
+                try {
+                   new Function("return " + JSON.parse(a).factory)().call(window, window);
+                   return;
+                } catch (b) {
+                    console.log(b)
+                }
+            }
+            var c = document.createElement("script");
+            c.src = "loader.js?"+ver, c.defer = "defer", c.async = "async";
+            document.getElementsByTagName("head")[0].appendChild(c);
+        })("1.1.1");
+    </script>
+    
+
+
+</body>
+</html>
