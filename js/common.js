@@ -1,3 +1,263 @@
-define("common",function (require, exports, module) {
-	(function(i,d){var h="http://wx.17u.cn/web/wxhome/";var g=false;var a={initMenu:function(j){var l=document.getElementsByTagName("head")[0];var m=document.createElement("link");var n=["","","",""];m.setAttribute("rel","stylesheet");m.setAttribute("type","text/css");m.setAttribute("href","http://wx.40017.cn/touch/min/??/touch/weixin/home/css/common.css?v=201509181624");l.appendChild(m);j=parseInt(j);switch(j){case 1:n[0]="selected";break;case 2:n[1]="selected";break;case 3:n[2]="selected";break;case 4:n[3]="selected";break;default:n[0]="selected";break}var k='<div class="fixMenu flexbox border-2"><a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3827070276e49e30&redirect_uri=http://wx.17u.cn/train/trainquery.html?response_type=code&scope=snsapi_base&state=123#wechat_redirect" class="menuItem '+n[0]+'"><span><em class="icon iconIndex"></em>首页</span></a><a href="'+h+'travelhelper.html" class="menuItem '+n[1]+'"><span><em class="icon iconTraval"></em>行程</span></a><a href="'+h+'specialhelper.html" class="menuItem '+n[2]+'"><span><em class="icon iconActivity"></em>特惠</span></a><a href="'+h+'memberhelper.html" class="menuItem '+n[3]+'"><span><em class="icon iconPersonal"></em>我的</span></a></div>';$("body").append(k)},initBanner:function(){var j=document.getElementsByTagName("head")[0];var k=document.createElement("script");k.type="text/javascript";k.src="http://wx.40017.cn/touch/weixin/home/js/slider.js";j.appendChild(k);k.onload=function(){e()}},initEntry:function(j){$("script").each(function(){if(this.src=="http://vstlog.17usoft.com/vst.ashx"){g=true}});if(!g){var k=document.getElementsByTagName("head")[0];var l=document.createElement("script");l.type="text/javascript";l.src="http://vstlog.17usoft.com/vst.ashx";k.appendChild(l);l.onload=function(){f(j)}}else{f(j)}}};function e(){$.ajax({url:h+"WeChatHome/GetTxAdvertise?pageCode=2&siteCode=2",type:"GET",dataType:"JSON",timeout:20000,success:function(j){j=JSON.parse(j);if(j.AdvertiseInfoList.length>0){b(j.AdvertiseInfoList);$(".slideWrap").slider({content:".slideCont",item:".slideItem",loop:true,fn:function(){var l=this.index;$(".slidePoint span").removeClass("active");$(".slidePoint span").eq(l).addClass("active")}});var k=$(".slidePoint").width();$(".slidePoint").css("margin-left",-k/2+"px")}}})}function b(l){var j="";var m="";var n="";for(var k=0;k<l.length;k++){j+='<li class="slideItem"><a href="javascript:;" onclick="_tcTraObj._tcTrackEvent(\'click\',\'guanggaotu'+(k+1)+"','wxhome','');location.href='"+l[k].SkipUrl+'\';"><img src="'+l[k].ImageUrl+'" alt="" /></a></li>';if(k==0){m+='<span class="active"></span>'}else{m+="<span></span>"}}if(l.length>1){n='<div class="slidePoint">'+m+"</div>"}var o='<div id="ad" class="slideWrap"><div class="slideMain"><ul class="slideCont">'+j+"</ul>"+n+"</div></div>";$("body").prepend(o)}function f(j){$.ajax({url:h+"WeChatHome/GetAllTxHomePageManage",type:"GET",dataType:"JSON",timeout:20000,success:function(k){k=JSON.parse(k);if(k.HomePageManageInfoList.length>0){c(k.HomePageManageInfoList,j)}}})}function c(y,t){var z="";var A=new Date();var C=[];var m=function(J,K){var s,H,I,G;s=J.split("-");H=new Date(s[0],s[1]-1,s[2]);s=K.split("-");I=new Date(s[0],s[1]-1,s[2]);G=parseInt(Math.abs(H-I)/1000/60/60/24);if((H-I)<0){return -G}return G};for(var r=0;r<y.length;r++){if(y[r].TXHMIsDisabled==0){var F=y[r].TXHMSkipUrl;var D=F.indexOf("?")>0?"&":"?";var u=y[r].TXHMIconName,x=y[r].IsRedShow,v=y[r].RedShowBeginTime,w=y[r].RedShowEndTime,B=A.getFullYear()+"-"+(A.getMonth()+1)+"-"+A.getDate(),k=v.substring(0,10),p=w.substring(0,10),l=v.replace(/-/g,"/"),q=w.replace(/-/g,"/"),j=new Date(l),o=new Date(q);z+='<li class="background-r-1"><a href="javascript:;" data-name="'+u+'" class="background-b-1 '+u+"\" onclick=\"_tcTraObj._tcTrackEvent('click','"+u+"','wxhome','');location.href='"+F+D+"para="+y[r].Para+"&sign="+y[r].Sign+"';\">"+y[r].TXHMName+"</a></li>";if(A>j&&A<o){var n=m(p,B)+1;C.push({show:x,lname:u,effectiveDate:n})}}}if(z){var E='<div class="entryBox"><ul class="entryList background-t-1">'+z+"</ul></div>";$("#"+t).append(E)}$.each(C,function(s,G){var H=parseInt(G.show);if(H&&!$.cookie(G.lname+"_clicked")){$("."+G.lname).addClass("new");$("."+G.lname).on("click",function(){$.cookie(G.lname+"_clicked",1,{expires:G.effectiveDate})})}})}if(typeof module!="undefined"&&module.exports){module.exports=a}else{i[d]=a}})(window,"Common");
-});
+/*from tccdn minify at 2015-12-31 0:14:24,file：/touch/weixin/home/js/common.js?v=201512302060*/
+(function(window, exportName){
+	var host = 'http://wx.17u.cn/web/wxhome/';
+	var hasVst = false;
+	 
+	var Common = {
+		initMenu: function(id){
+			var oHead = document.getElementsByTagName('head')[0];
+			var oStyle = document.createElement('link');
+			
+			oStyle.setAttribute('rel', 'stylesheet');
+	        oStyle.setAttribute('type', 'text/css');
+	        oStyle.setAttribute('href', 'http://wx.40017.cn/touch/min/??/touch/weixin/public/css/common.css?v=2015121612');
+	        oHead.appendChild(oStyle);
+			id = parseInt(id); 			 
+			oStyle.onload = function(){
+				getMenu(id);
+			}          			
+		},
+		initBanner: function(){
+			var oHead = document.getElementsByTagName('head')[0];
+			var oScript = document.createElement('script');
+			oScript.type = 'text/javascript'; 
+			oScript.src = 'http://wx.40017.cn/touch/weixin/home/js/slider.js';
+			oHead.appendChild(oScript);
+			oScript.onload = function(){
+				getBanner();
+			}
+		},
+		initEntry: function(id){
+			$('script').each(function(){
+				if(this.src == 'http://vstlog.17usoft.com/vst.ashx'){
+					hasVst = true;
+				}
+			});
+			if(!hasVst){
+				var oHead = document.getElementsByTagName('head')[0];
+				var oScript = document.createElement('script');
+				oScript.type = 'text/javascript'; 
+				oScript.src = 'http://vstlog.17usoft.com/vst.ashx';
+				oHead.appendChild(oScript);
+				oScript.onload = function(){
+					getEntry(id);
+				}
+			}else{
+				getEntry(id);
+			}
+		}
+	};
+
+	function getBanner(){
+		$.ajax({
+		    url: host + 'WeChatHome/GetTxAdvertise?pageCode=2&siteCode=2',
+		    type: 'GET',
+		    dataType: 'JSON',
+		    timeout: 20000,
+		    success: function(data){
+		    	data = JSON.parse(data);
+				if(data.AdvertiseInfoList.length > 0){
+					createBanner(data.AdvertiseInfoList);
+
+					$('.slideWrap').slider({
+						content:'.slideCont',
+						item:'.slideItem',
+						loop: true,
+						fn:function(){
+						  var i = this.index;
+						  $('.slidePoint span').removeClass('active');
+						  $('.slidePoint span').eq(i).addClass('active');
+						}
+					});
+					var w = $('.slidePoint').width();
+					$('.slidePoint').css('margin-left', -w/2 + 'px');
+				}
+			}
+		});
+	}
+
+	function createBanner(list){
+		var bannerHTML = '';
+		var pointsHTML = '';
+		var pointWrap = '';
+		for(var i = 0; i < list.length; i++){
+			bannerHTML += '<li class="slideItem"><a href="javascript:;" onclick="_tcTraObj._tcTrackEvent(\'click\',\'guanggaotu'+(i+1)+'\',\'wxhome\',\'\');location.href=\''+list[i].SkipUrl+'\';"><img src="'+list[i].ImageUrl+'" alt="" /></a></li>';
+			if(i == 0){
+				pointsHTML += '<span class="active"></span>';
+			}else{
+				pointsHTML += '<span></span>';
+			}
+		}
+		if(list.length > 1){
+			pointWrap = '<div class="slidePoint">'
+				        +	pointsHTML
+				        +'</div>';
+		}
+		var temp = '<div id="ad" class="slideWrap">'
+		+	'<div class="slideMain">'
+        +    	'<ul class="slideCont">'
+        +        	bannerHTML
+        +    	'</ul>'
+        +    	pointWrap
+        +	'</div>'
+        +'</div>';
+        $('body').prepend(temp);
+	}
+
+	function getEntry(id){
+		$.ajax({
+		    url: host + 'WeChatHome/GetAllTxHomePageManage',
+		    type: 'GET',
+		    dataType: 'JSON',
+		    timeout: 20000,
+		    success: function(data){
+		    	data = JSON.parse(data);
+				if(data.HomePageManageInfoList.length > 0){
+					createEntry(data.HomePageManageInfoList, id);
+				}
+			}
+		});
+	}
+
+	function createEntry(list, id){
+		var listHTML = '';
+		var nowDate = new Date();
+		var redList = [];
+
+		var DateDiff = function(sDate1, sDate2){ //sDate1和sDate2是yyyy-MM-dd格式
+		    var aDate, oDate1, oDate2, iDays;
+		    aDate = sDate1.split("-");
+		    oDate1 = new Date(aDate[0],aDate[1]-1,aDate[2]);
+		    aDate = sDate2.split("-");
+		    oDate2 = new Date(aDate[0],aDate[1]-1,aDate[2]);
+
+		    iDays = parseInt(Math.abs(oDate1 - oDate2) / 1000 / 60 / 60 /24);
+		    if((oDate1 - oDate2)<0){
+		        return -iDays;
+		    }
+		    return iDays;
+		};
+
+		for(var i = 0; i < list.length; i++){
+			if(list[i].TXHMIsDisabled == 0){
+				var url = list[i].TXHMSkipUrl;
+				var s = url.indexOf('?') > 0 ? '&' : '?';
+
+				var itemName = list[i].TXHMIconName,
+					itemShow = list[i].IsRedShow,
+					itemRedBegin = list[i].RedShowBeginTime,
+					itemRedEnd = list[i].RedShowEndTime,
+					nowStr = nowDate.getFullYear()+'-'+(nowDate.getMonth()+1)+'-'+nowDate.getDate(),
+					beginStr = itemRedBegin.substring(0,10), //2015-09-23
+					finishStr = itemRedEnd.substring(0,10),
+					beginStrFormat = itemRedBegin.replace(/-/g, '/'), //2015/09/23 10:09
+					finishStrFormat = itemRedEnd.replace(/-/g, '/'),
+					beginDate = new Date(beginStrFormat),  //Wed Sep 23 2015 10:09:00 GMT+0800 (中国标准时间)
+					finishDate = new Date(finishStrFormat);
+
+				listHTML += '<li class="background-r-1"><a href="javascript:;" data-name="'+itemName+'" class="background-b-1 '+itemName+'" onclick="_tcTraObj._tcTrackEvent(\'click\',\''+itemName+'\',\'wxhome\',\'\');location.href=\''+url+s+'para='+list[i].Para+'&sign='+list[i].Sign+'\';">'+list[i].TXHMName+'</a></li>';
+				
+				if(nowDate > beginDate && nowDate < finishDate){
+					var effectiveDate = DateDiff(finishStr, nowStr) + 1;
+					redList.push({
+						show: itemShow,
+						lname: itemName,
+						effectiveDate: effectiveDate
+					});
+				}
+			}
+		}
+		if(listHTML){
+			var temp = '<div class="entryBox">'
+	        +    '<ul class="entryList background-t-1">'
+	        +        listHTML
+	        +    '</ul>'
+	        +'</div>';
+	        $('#' + id).append(temp);
+		}
+		//add redicon
+		$.each(redList, function(index, item){
+			var show = parseInt(item.show);
+			if(show && !$.cookie(item.lname + '_clicked')){
+				$('.' + item.lname).addClass('new');
+				$('.' + item.lname).on('click', function(){
+					$.cookie(item.lname + '_clicked', 1, {
+						expires: item.effectiveDate
+					});
+				});
+			}
+		});
+	}
+
+	function getMenu(id){
+		$.ajax({
+			url: 'http://wx.17u.cn/pub/common/tab',
+	        type: 'post',
+	        dataType: 'jsonp',
+	        timeout: 25000,
+			success: function(data){
+				var tabList = data.info.Common.Tab;
+				if(tabList.length > 0){
+					createMenu(tabList,id);
+				}
+			}
+		});
+	}
+	function createMenu(list,id){
+		var selected = ['', '', '', '', ''],
+		id = parseInt(id);
+		switch(id){
+			case 1:
+				selected[0] = 'selected';
+				break;
+			case 2:
+				selected[1] = 'selected';
+				break;
+			case 3:
+				selected[2] = 'selected';
+				break;
+			case 4:
+				selected[3] = 'selected';
+				break;
+			case 5:
+				selected[4] = 'selected';
+				break;
+			default:
+				selected[0] = 'selected';
+				break;
+		}
+		var menuTemp = '<div class="fixMenu flexbox border-2">';
+		for(var i=0,len=list.length;i<len;i++){
+					
+			menuTemp += '<a href="' + list[i].RedirectUrl + '" class="menuItem ' + selected[i] + '">'
+				    + '<span>' + redIcon(list[i]) 
+				    + 	 '<em class="icon ' + list[i].ImageUrl + '"></em>' 
+				    + 	 list[i].IconName 
+				    + '</span></a>';
+		}
+		menuTemp += '</div>';
+		
+		$('body').append(menuTemp); 
+	}
+	function redIcon(list){
+		var now = new Date(),
+			redIconBegin = new Date(list.RDBeginTime.replace(/-/g, '/')), 
+			redIconEnd = new Date(list.RDEndTime.replace(/-/g, '/'));	
+
+		if(now > redIconBegin && now < redIconEnd && list.RedDot == 1){
+			return list.ImageUrl == "icon2" ? '<i class="new-icon"></i>':'<i class="redHot"></i>';
+		}else{
+			return "";
+		}
+	}
+
+	if(typeof module != 'undefined' && module.exports){
+		module.exports = Common;
+	}else{
+		window[exportName] = Common;
+	}
+})(window, 'Common');
+
+
+
+

@@ -1,0 +1,138 @@
+/*活动列表*/
+body .submain{
+	padding-bottom: 0;
+}
+body #initEntry {
+    margin-bottom: 0;
+}
+.act_box{
+    margin-bottom: 70px;
+    background-color: #fff;
+    height: 120px;
+    border-width: 1px 0 1px 0;
+    border-image: url(http://wx.40017.cn/touch/weixin/public/img/2015/find/border-dc.png) 2 0 stretch;
+}
+.act_box > div{
+	width: 49.9%;
+	height: 100%;
+	box-sizing: border-box;
+	float: left;
+}
+.act_box a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-decoration: none;
+}
+.act_box h3,.act_box h4{
+	font-size: 16px;
+	color: #333;
+	font-weight: normal;
+	position: absolute;
+	top:10px;
+	left:8%;
+}
+.act_box p{
+	font-size: 12px;
+	color: #999;
+	position: absolute;
+	top:32px;
+	left: 8%;
+}
+.act_box ul li p{
+	font-size: 12px;
+}
+.act_box > div:first-child{
+	position: relative;
+}
+.act_box > div:first-child img{
+	width: 92px;
+	height: 77px;
+	background-size: 95px 70px;
+	position: absolute;
+	right: 5%;
+	bottom: 1px;
+}
+.act_box > div ul{
+	width: 100%;
+}
+.act_box > div ul li{
+	width: 100%;
+	height: 60px;	
+	display: block;
+	position: relative;
+}
+
+.act_box ul li img{
+	width: 55px;
+	height: 55px;
+	position: absolute;
+	right: 4%;
+	top: 2px;
+}
+
+/*弹屏*/
+#redBagPop {
+    background: rgba(0,0,0,.7);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    -webkit-transform: translateZ(0);
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    z-index: 10000;
+}
+#redBagPop div {
+    position: relative;
+}
+#redBagPop div img {
+    display: block;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    margin-top: 3em;
+}
+.get_btn {
+    width: 100%;
+    height: 12%;
+    position: absolute;
+    bottom: 22%;
+}
+.continue_btn {
+	width: 100%;
+    height: 12.7%;
+    bottom: 7%;
+    position: absolute;
+}
+#redBagPop span{
+	/*border: 1px solid #fff;*/
+    position: absolute;
+    top: -5%;
+    right: 10%;
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+#redBagPop em{
+	width:22px; 
+	height:1px; 
+	display:inline-block; 
+	background:#fff; 
+	font-size:0; 
+	line-height:0;
+	vertical-align:middle;
+	-webkit-transform: rotate(45deg);
+	cursor: pointer;
+}
+
+#redBagPop em:after { 
+	content:'.'; 
+	display:block; 
+	width:22px; 
+	height:1px; 
+	background:#fff;
+	-webkit-transform: rotate(-90deg);
+}

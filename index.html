@@ -10,14 +10,6 @@
     <style type="text/css">
         .loading_wrap{ transition : all 0.2s ease-out ;  opacity: 1;   background: #E9ECF1 !important;    width:100%;    height: 100%;    position: fixed;    top:0;    left:0;    z-index:1101;}.loading{    position: absolute;    background: #E9ECF1 !important;    top: 50%;    left: 50%;    width: 71px;    height: 71px;    margin: -33px 0 0 -33px;}.loadingimg{    display: block;    width: 66px;    height: 66px;    margin: 0 auto;}.loading .loading_text{    font-size: 14px;    margin-top: 12px;    text-align: center;    color: #999;}
     </style>
-
-     <script type="text/javascript">
-        function insertAd(){
-            var d = document.createElement('div');
-            d.innerHTML =' <div id="ad" class="slideBox" style="overflow: hidden; position: relative;"><div class="slideMain"><ul class="slideCont" style="position: relative; width: 100%; transform: translate3d(-100%, 0px, 0px);"><li class="slideItem"><a href="http://www.ly.com/zhuanti/bachelordaywx-zizhuyou/" ><img src="http://pic3.40017.cn/txoc/poster/2015/11/11/18/0LlQUk.jpg" alt=""></a></li><li class="slideItem" style="position: absolute; width: 100%; top: 0px; left: 100%;"><a href="http://m.ly.com/zhuanti/paidindex"><img src="http://pic3.40017.cn/txoc/poster/2015/11/11/10/obWv65.png" alt=""></a></li><li class="slideItem" style="position: absolute; width: 100%; top: 0px; left: 200%;"><a href="http://www.ly.com/zhuanti/bachelordaywx-zizhuyou/"><img src="http://pic3.40017.cn/txoc/poster/2015/11/11/18/0LlQUk.jpg" alt=""></a></li></ul><div class="slidePoint2" style="margin-left: -16.5px;"><span class=""></span><span class="active"></span></div></div><span class="indicator" style="margin-left: 0px;"><i class=""></i><i class="active"></i></span></div>';
-            document.body.insertBefore(d.firstElementChild,document.getElementById("indexNav"))
-        }
-    </script>
 </head>
 <body>
    <section class="loading_wrap" id="loading"><section class="loading"><img src="loading.gif" class="loadingimg"> <p class="loading_text">一路同程</p></section></section>
@@ -60,18 +52,38 @@
                      console.log("css sector clear"+(+new Date-begin))
                 }
             },
-            html:{
-                url:"http://js.40017.cn/cn/train/promote/tongcheng.loadjs/",
-                list:[
-                    "/temp/temp.html?1.91"
-                ],
-                onLoad:function(){
-                    console.log("html sector clear"+(+new Date-begin))
-                }
-            },
+            // html:{
+            //     url:"http://js.40017.cn/cn/train/promote/tongcheng.loadjs/",
+            //     list:[
+            //         "/temp/temp.html?1.91"
+            //     ],
+            //     onLoad:function(){
+            //         console.log("html sector clear"+(+new Date-begin))
+            //     }
+            // },
             onLoad:function(){
-                console.log("all sector clear" +(+new Date-begin))
-                require("http://js.40017.cn/cn/min/??",["/cn/train/promote/tongcheng.loadjs/angularjs.js?1.6.4"]);
+                console.log("all sector clear" +(+new Date-begin));
+
+                (function(){
+                    var _tcq = _tcq || [];
+                    var _timediff = -1;
+                    var refid = $.cookie("17uCNRefId") ? $.cookie("17uCNRefId").split("&")[0].replace("RefId=", "") : 0;
+                    var userid = 0;
+                    if ($.cookie("WxUser")) {
+                        var arr = $.cookie("WxUser").split("&");
+                        if (arr.length > 2) userid = arr[2].replace("userid=", "");
+                    }
+                    if (typeof _tcopentime != "undefined")
+                    { _timediff = new Date().getTime() - _tcopentime; }
+                    _tcq.push(['_serialid', '0' ? '0' : 0]);
+                    _tcq.push(['_vrcode', '10003-2016-0']);
+                    _tcq.push(['_refId', refid]);
+                    _tcq.push(['_userId', userid]);
+                    _tcq.push(['_openTime', _timediff]);
+                    _tcq.push(['_trackPageview', getWxObj() ? getWxObj().openid : '']);
+                    _tcq.push(['_deviceType', zj.envi.deviceType]);
+                })();
+                //require("http://js.40017.cn/cn/min/??",["/cn/train/promote/tongcheng.loadjs/angularjs.js?1.6.4"]);
             }
         };
         (function(ver){
@@ -89,8 +101,115 @@
             document.getElementsByTagName("head")[0].appendChild(c);
         })("1.1.1");
     </script>
+ 
     
 
+<header id="indexNav" class="index_nav border-bottom">
+    <ul>
+        <li id="IsTrain" class="border_bottom_green">火车票</li>
+        <li id="IsFlight">国内/国际机票</li>
+    </ul>
+</header>
+<section id="mainPage">
+    <a><div class="f-tip fn-clear"><span></span></div></a>
+    <div id="t_content">
+        <form method="get" id="t_myform" aurl="trainsearch-{begincity}-{tocity}-{time}-{openid}-{token}.html">
+            <div id="t_main">
+
+                <div class="query-wrap  border-bottom">
+                    <div id="t_city" class="fn-clear border-bottom">
+                        <div id="t_from" data="fromCity" onclick="_tcTraObj._tcTrackEvent('click','chufachengshi','wxtrain','')">
+                            <p>出发地</p>
+                            <p class="t_incity">
+                                <input name="qingxuan1" readonly type="text" id="t_goCity" class="c_name" value="请选择" />
+                            </p>
+                            <input type="hidden" name="BeginPlaceCn" class="CN" value="" />
+                            <input type="hidden" name="BeginPlace" class="PY" autocomplete="off" />
+                        </div>
+                        <div id="t_to" data="arrCity" onclick="_tcTraObj._tcTrackEvent('click','daodachengshi','wxtrain','')">
+                            <p>到达地</p>
+                            <p class="t_incity">
+                                <input name="qingxuan2" readonly type="text" id="t_backCity" class="c_name" value="请选择" />
+                            </p>
+                            <input type="hidden" name="ArrPlaceCn" class="CN" value="" />
+                            <input type="hidden" name="ArrPlace" class="PY" autocomplete="off" />
+                        </div>
+                        <em class="t_changecity" id="t_changeCity" onclick="_tcTraObj._tcTrackEvent('click','qiehuan','wxtrain','')"><em class="tpic_change icon-train"></em></em>
+                    </div>
+                    <div id="BeginTime" class="touchablelist fn-clear" onclick="_tcTraObj._tcTrackEvent('click','chufariqi','wxtrain','')">
+                        <p class="levdatetext">出发日期</p>
+                        <p class="leavedate" id="tselect_Date"><span class="orange"></span>&nbsp;<span></span></p>
+                        <input type="hidden" name="Time" id="Time" autocomplete="off" value="" />
+                    </div>
+                </div>
+
+                <div id="searchwrap" class="searchwrap fn-clear fn-hide" onclick="_tcTraObj._tcTrackEvent('click','zhisou','wxtrain','')">
+                    <div id="Filter1" data-options="{'name':'filter'}">只搜高铁/动车</div>
+                </div>
+                <div class="fn-clear submit-box">
+                    <button  id="t_search" class="green-button" onclick="_tcTraObj._tcTrackEvent('click','chaxun','wxtrain','')">
+                        火车查询
+                    </button>
+                </div>
+            </div>
+            <div>
+
+            </div>
+            <input type="hidden" name="openid" value="0" />
+            <input type="hidden" name="token" value="0" />
+        </form>
+    </div>
+    <div id="queryhistory">
+        <div class="linebox"><span>最近查询</span><p></p></div>
+        <div class="querybox_cont" id="querybox_cont">
+            <ul></ul>
+        </div>
+    </div>
+</section>
+<section id="submain" class="submain"></section>
+<section id="actBox"></section>
+
+<div id="footer" class="pub_bottom">
+
+</div>
+
+
+    <div class="hiddenArea">
+        <input type="hidden" id="PublicInterface" value="http://www.ly.com/huochepiao/resource/PublicInterface/TrainInterfaceService">
+        <input type="hidden" id="ResourceUrl" value="http://www.ly.com/huochepiao/resource/">
+        <input type="hidden" id="HotelAjaxCall" value="http://www.ly.com/hotel/ajax/HotelAjaxCall.aspx">
+        <input type="hidden" id="WritePayBack" value="http://tcservice.17usoft.com/train/requesthandler/Payment/WritebackPayStatus.ashx?callback=1">
+        <input type="hidden" id="CallBackUrl" value="http://m.ly.com/pub/train/paywriteback.html">
+        <input type="hidden" id="MerchentReUrl" value="http://wx.17u.cn/train/">
+        <input type="hidden" id="wxFlightRootUrl" value="http://wx.17u.cn/flight/">
+        <input type="hidden" id="LoginUrl" value="/membership/login.html?returnurl=">
+        <input type="hidden" id="MyOrders" value="http://wx.17u.cn/train/orderlist/">
+        <input type="hidden" id="RefundOrderTime" value="120">
+        <input type="hidden" id="GetCityUrl" value="http://www.ly.com/hotel/ajax/HotelAjaxCall.aspx">
+        <input type="hidden" id="WorkSTime" value="07:00">
+        <input type="hidden" id="WorkETime" value="22:58">
+        <input type="hidden" id="PayUrl" value="TrainPay.html">
+        <input type="hidden" id="wxTrainUrl" value="http://wx.17u.cn/train/">
+        <input type="hidden" id="wxFlightUrl" value="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3827070276e49e30|redirect_uri=http://wx.17u.cn/flight/orderlist.html?orderType=1|showwxpaytitle=1|response_type=code|scope=snsapi_base|state=123|connect_redirect=1#wechat_redirect">
+        <input type="hidden" id="hotCityUrl" value="http://www.ly.com/huochepiao/resource/station/GetHotCityListV1">
+        <input type="hidden" id="letterCityUrl" value="http://www.ly.com/huochepiao/resource/Station/GetCityListByLetter">
+        <input type="hidden" id="wxIndexUrl" value="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3827070276e49e30&amp;redirect_uri=http://wx.17u.cn/train/trainquery.html?showwxpaytitle=2&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect">
+        <input type="hidden" id="IsWeixin" value="1">
+        <input type="hidden" id="TrainorderPublicUrl" value="http://trainorder.17usoft.net/">
+        <input type="hidden" id="hidJsVersion" value="?v=201512302060"/>
+        <input type="hidden" id="hidCssVersion" value="?v=201512302060" />
+    </div>
+
+        <script type="text/javascript">
+            var isWeixin = document.getElementById("IsWeixin").value;
+            if (isWeixin == 1) {
+                //mobileUtil.dialog("此网页暂不支持订票，请登录微信【钱包-火车票机票】订购！", "body", function () {
+                    //location.replace(WebConfigUrl.wxIndexUrl);
+                //});
+            }
+        </script>
+
+    <script type='text/javascript' src=" http://vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
 
 </body>
 </html>
