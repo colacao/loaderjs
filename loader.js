@@ -104,10 +104,10 @@
 		this.deps = [];
 		this.factory = factory.toString();
 		this.loadVer = _ver;
+		this.domin = document.URL;
 		return this;
 	};
 	_Module.prototype = {
-
 		save: function(type) {
 			try {
 				localStorage.setItem("_" + type + "_" + this.id, JSON.stringify(this))
@@ -127,7 +127,7 @@
 	 * @param  {Function} factory 函数
 	 * @param  {String} type    类型
 	 */
-	global.define = function(id, deps, factory, type) {
+	global.$define = function(id, deps, factory, type) {
 		if (arguments.length === 2) {
 			factory = deps;
 			type = "m";
@@ -171,7 +171,7 @@
 	 * @param  {String} id 模块名
 	 * @return {Object}    模块
 	 */
-	global._require = function(id) {
+	global.$require = function(id) {
 		return _mods[id];
 	};
 	/**
@@ -292,11 +292,9 @@
 				var id = _id.join('.');
 				var mod = localStorage.getItem("_" + type + "_" + id);
 				try {
-					//console.log(mod);
 					mod && __execute(mod, id, type);
 				} catch (err) {
-					console.error(type, "_" + type + "_" + id);
-					//ret.push([type, "_" + type + "_" + id]);
+					window["console"] && window["console"].error(type, "_" + type + "_" + id);
 				}
 			} else {
 				for (var i = 0; i < exports.js.list.length; i++) {
@@ -308,7 +306,7 @@
 					try {
 						mod && __execute(mod, id, type);
 					} catch (err) {
-						console.error("_" + type + "_" + id, err);
+						window["console"] && window["console"].error(type, "_" + type + "_" + id);
 						ret.push([type, "_" + type + "_" + id]);
 					}
 				}
@@ -389,7 +387,7 @@
 	/**
 	 * 加载CSS
 	 */
-	var _initCss = function(csss) {
+	var _initCSS = function(csss) {
 		var fun = arguments.callee;
 		var modes = [];
 		exports = csss || exports;
@@ -410,14 +408,7 @@
 					!csss && _checkOnLoad() && _onAllLoad();
 				},
 				onError: function() {
-					// _initCss.count++;
-					// if (_initCss.count == 1) {
-					// 	setTimeout(fun, 16);
-					// } else if (_initCss.count == 2) {
-					// 	setTimeout(fun, 100);
-					// } else {
-					// 	_emit("onErrorCSSInit" + _initCss.count);
-					// }
+					window["console"] && window["console"].error("onErrorCSSInit",arguments);
 				}
 			});
 		} else {
@@ -428,7 +419,12 @@
 			!csss && _checkOnLoad() && _onAllLoad();
 		}
 	};
-	global.initCSS = _initCss;
+	/**
+	 * 调试模式下加载资源
+	 * @param  {String} type    类型
+	 * @param  {Object} exports 所有配置项
+	 * @param  {[type]} list    指定要加载的列表
+	 */
 	var _debug = function(type, exports, list) {
 		for (var i = 0; i < exports[type].list.length; i++) {
 			var _modes = [];
@@ -449,11 +445,16 @@
 					}
 				},
 				onError: function() {
-
+					window["console"] && window["console"].error("_debug",arguments);
 				}
 			}, i, exports);
 		}
 	};
+	/**
+	 * 检查需要加载的资源
+	 * @param  {String} type 资源类型
+	 * @return {Object}      
+	 */
 	var _getNeedLoad = function(type) {
 		var modes = [];
 		for (var i = 0; i < exports[type].list.length; i++) {
@@ -467,9 +468,9 @@
 		}
 		return modes;
 	};
-	_initCss.count = 0;
 	/**
 	 * 加载JS
+	 * @param  {Object} jss 配置项
 	 */
 	var _initJS = function(jss) {
 		var fun = arguments.callee;
@@ -480,7 +481,6 @@
 			_debug('js', exports, jss);
 			return;
 		}
-
 		modes = _getNeedLoad('js');
 		var urls = _getUrls(exports.js.url, modes);
 		if (modes.length) {
@@ -493,14 +493,7 @@
 					!jss && _checkOnLoad() && _onAllLoad();
 				},
 				onError: function() {
-					// _initJS.count++;
-					// if (_initJS.count == 1) {
-					// 	setTimeout(fun, 16);
-					// } else if (_initJS.count == 2) {
-					// 	setTimeout(fun, 100);
-					// } else {
-					// 	_emit("onErrorInitJS" + _initJS.count);
-					// }
+					window["console"] && window["console"].error("onErrorInitJS",jss);
 				}
 			});
 		} else {
@@ -517,10 +510,9 @@
 			!jss && _checkOnLoad() && _onAllLoad();
 		}
 	};
-	global.initJS = _initJS;
-	_initJS.count = 0;
 	/**
 	 * 加载HTML
+	 * @param  {Object} htmls 配置项
 	 */
 	var _initHTML = function(htmls) {
 		var fun = arguments.callee;
@@ -544,14 +536,7 @@
 					!htmls && _checkOnLoad() && _onAllLoad();
 				},
 				onError: function() {
-					// _initHTML.count++;
-					// if (_initHTML.count == 1) {
-					// 	setTimeout(fun, 16);
-					// } else if (_initHTML.count == 2) {
-					// 	setTimeout(fun, 100);
-					// } else {
-					// 	_emit("onErrorHTMLInit" + _initHTML.count);
-					// }
+					window["console"] && window["console"].error("onErrorHTMLInit",arguments);
 				}
 			});
 		} else {
@@ -562,6 +547,10 @@
 			!htmls && _checkOnLoad() && _onAllLoad();
 		}
 	};
+	/**
+	 * 检查资源加载完成
+	 * @param  {Object} data 配置项
+	 */
 	var _checkResourcesOnLoad = function(data) {
 		var isAllLoad = function() {
 			var cssok = (!data.css || data.css.state == data.css.list.length);
@@ -578,14 +567,17 @@
 	global.initResources = function(data) {
 		data['html'] && _initHTML(data);
 		data['js'] && _initJS(data);
-		data['css'] && _initCss(data);
+		data['css'] && _initCSS(data);
 		_checkResourcesOnLoad(data)
 	};
-	global.initHTML = _initHTML;
-	_initHTML.count = 0;
-	window['exports'] && window['exports'].html && _initHTML();
-	window['exports'] && window['exports'].js && _initJS();
-	window['exports'] && window['exports'].css && _initCss();
+	//global.initJS = _initJS;
+	//global.initCSS = _initCss;
+	//global.initHTML = _initHTML;
+	(function() {
+		window['exports'] && window['exports'].html && _initHTML();
+		window['exports'] && window['exports'].js && _initJS();
+		window['exports'] && window['exports'].css && _initCSS();
+	})();
 	(function() {
 		var callbackfun = _getCurrAbsPath().match(/\b\w+$/);
 		callbackfun && window[callbackfun[0]] && window[callbackfun[0]]();
