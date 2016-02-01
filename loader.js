@@ -1,5 +1,5 @@
-(function(global, callback) {
-	var _ver = "1.0.1",
+;(function(global, callback) {
+	var _ver = "2.0.1",
 		_clearCount = 0,
 		_mods = {},
 		_m = {
@@ -268,7 +268,16 @@
 					new Function(ss[i].textContent)();
 				}
 			}
-			document.body.appendChild(t.removeChild(t.firstChild));
+			var els = t.removeChild(t.firstChild);
+			if(els.className.match(/page/)){
+				document.body.appendChild(els);
+			}else{
+				for(var i=0;i<els.childNodes.length;i++){
+					if(els.childNodes[i].nodeType==1){
+						document.body.appendChild(els.childNodes[i]);
+					}
+				}
+			}
 		} else {
 			var sty = document.createElement('style');
 			sty.type = "text/css";
