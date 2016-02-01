@@ -9,7 +9,7 @@ var gulp = require("gulp"),
   pngquant = require('imagemin-pngquant'),
   cache = require('gulp-cache'),
   zip = require('gulp-zip'),
-  caoyue = require("gulp-caoyue");
+  tcloader = require("gulp-tcloader");
 
 var config = require("./config.json");
 
@@ -23,7 +23,7 @@ gulp.task('default', function() {
 gulp.task('js', function() {
   gulp.src('js/*.js')
     .pipe(uglify())
-    .pipe(caoyue("m"))
+    .pipe(tcloader("m"))
     .pipe(gulp.dest('dest/js'));
 });
 gulp.task('img', function() {
@@ -43,13 +43,13 @@ gulp.task('img', function() {
 gulp.task('css', function() {
   gulp.src('css/*.css')
     .pipe(cssminify())
-  
+     .pipe(tcloader("s"))
     .pipe(gulp.dest('dest/css'));
 });
 gulp.task('html', function() {
   gulp.src('temp/*.html')
     .pipe(htmlmini())
-    .pipe(caoyue("t"))
+    .pipe(tcloader("t"))
     .pipe(rename({
       extname: '.html.js'
     }))
